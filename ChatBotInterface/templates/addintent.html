@@ -1,0 +1,167 @@
+<html>  
+  <head>  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>XR RECON</title>
+  </head>
+  <style>
+              body{
+      background-color: rgb(25, 25, 27);
+      color: white;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    
+    .page-header{
+      color: white;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      text-align: center;
+      padding: 0%;
+      margin-top: 10;
+      margin-bottom: 0;
+      border-bottom: 1px solid yellow;
+      letter-spacing: 5px;
+    }
+    .active a{
+      color: yellow !important;
+    }
+
+    .main-content{
+      padding: 15px;
+      padding-top: 25px;
+    }
+    .navbar{
+      background-color:black!important;
+     
+    }
+    p.gam-full-form{
+      color: white;
+      margin: 0%;
+      text-align: center;
+      font-variant: small-caps;
+    }
+    .yellow{
+      color: rgb(253, 228, 3);
+    }
+    
+    .table-img{
+      background-repeat: no-repeat;
+      background-image: url("#");  /* Background Image for Forms*/
+      background-blend-mode: lighten;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+      justify-content: center;
+    }
+
+    .table-style{
+      margin: 0 auto;
+      width: 60%;
+    }
+
+    label{
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    
+    #footer{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color:black ;
+      color: white;
+      text-align: center;
+    }
+
+    .table-style thead{
+      background-color: black;
+    }
+
+    .table-style th,td{
+      padding: 10px;
+      text-align: center;
+    }
+
+    .table-style th{
+      font-size: 20px;
+    }
+
+    .table-style td{
+      font-size: 18px;
+    }
+
+    .table-style td a{
+      color: white;
+    }
+    table.table-style{
+      overflow-x: visible;
+    }
+    .jumbotron{
+        background-color: rgb(25, 25, 27);
+        width: 100%;
+        text-align: center;
+    }
+      .form-img{
+        background-repeat: no-repeat;
+        background-image: url("#");  /* Background Image for Forms*/
+        background-blend-mode: lighten;
+        background-attachment: fixed;
+        /* border:1px solid; */
+        background-size: 100% 100%;
+      }
+
+      .form-style{
+        margin: 0 auto;
+        width: 60%;
+      }
+  </style>
+<body>
+  <script>
+    var count=1;
+    function adddataitem() {
+      var x = document.getElementById("inputs");
+                var new_field = document.createElement("input");
+                new_field.setAttribute("type", "text");
+                new_field.setAttribute("class", "form-control input-lg");
+                new_field.setAttribute("name", "data_query"+count);
+                new_field.setAttribute("id", "data_query"+count);
+                var pos = x.childElementCount;
+                x.insertBefore(new_field, x.childNodes[pos]);
+                x.insertBefore(document.createElement("br"),x.childNodes[pos]);
+      count+=1;
+    }
+  </script>
+  
+<div class="row main-content">
+  <div class="col-md-12 form-img" >
+    <form method="POST">
+      <br>
+      <br>
+      <div class="form-style"> 
+      {{ form.csrf_token }}
+      {{form.intent_name.label(class_="label")}}{{form.intent_name(class_="form-control input-lg")}}
+      <br>
+      {{form.intent_response.label(class_="label")}}{{form.intent_response(class_="form-control input-lg")}}
+      <br>
+      <label class="label" for="inputs">Intent Examples</label>
+      <div id="inputs">
+        <input class="form-control input-lg" id="data_query0" name="data_query0" type="text">
+        <br>
+      </div>
+      <button class="btn btn-success float-right" onclick="adddataitem(); return false;"> Add More Examples </button>
+      <br>
+      <br>
+      <br>
+      <center>{{form.submit(class_="btn btn-light font-weight-bold")}}</center>
+      <br>
+      </div>
+    </form>
+      </div>
+</div>
+</body>
+</html>
